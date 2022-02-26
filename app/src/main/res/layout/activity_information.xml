@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Information">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="40dp"
+            android:textAlignment="gravity"
+            android:text="1.    Skip instruction section by tapping once.&#xA;&#xA;2.   Choose between two buttons:&#xA;
+        upper for price reading&#xA;lower for banknote recognition&#xA;&#xA;3.  Turn your phone camera towards price or banknote&#xA;&#xA;4.  Tap once to scan&#xA;&#xA;5.    The app will read your price or banknote
+        &#xA;&#xA;6.  When you take the photo, swipe right to
+        return to main menu or click the button in the upper left corner to scan again&#xA;&#xA;7.  In the bottom left corner of Main Menu you
+        can choose Settings button for adjustment of language, currency, voice speed, camera flash and color mode options or in the bottom
+        right corner button for Instructions. It is possible to turn on silent mode as well"
+            android:textColor="@color/black"
+            android:textSize="32dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
