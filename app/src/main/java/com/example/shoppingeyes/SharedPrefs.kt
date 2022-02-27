@@ -4,7 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 
 class SharedPrefs(context: Context) {
-    private var prefs: SharedPreferences = context.getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
+    private var sharedPrefFile = "shared_prefs"
+    private var prefs: SharedPreferences = context.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
     private var editor: SharedPreferences.Editor = prefs.edit()
     var con: Context? = null
 

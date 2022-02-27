@@ -3,15 +3,20 @@ package com.example.shoppingeyes
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.View
+import android.widget.Toast
+import java.util.*
 
-class HomeScreen : AppCompatActivity() {
+class HomeScreen : AppCompatActivity(), TextToSpeech.OnInitListener {
+    private var tts: TextToSpeech? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
         supportActionBar?.hide()
 
+        tts = TextToSpeech(this,this)
     }
 
     fun readPrices(v: View){
@@ -34,6 +39,25 @@ class HomeScreen : AppCompatActivity() {
         startActivity(iInformation)
     }
 
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            var result = tts!!.setLanguage(Locale.US)
+            tts!!.speak("first button: read the prices", TextToSpeech.QUEUE_ADD, null, "")
+            tts!!.speak("second button: read the banknotes", TextToSpeech.QUEUE_ADD, null, "")
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
+                Toast.makeText(this, "Language specified not supported", Toast.LENGTH_SHORT).show()
+            }
+        }else{
+            Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
+        }
+    }
 
+    override fun onDestroy() {
+        if(tts != null){
+            tts!!.stop()
+            tts!!.shutdown()
+        }
+        super.onDestroy()
+    }
 
 }
