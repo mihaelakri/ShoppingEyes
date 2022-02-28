@@ -1,5 +1,6 @@
 package com.example.shoppingeyes
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,8 +11,21 @@ import java.util.*
 
 class HomeScreen : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var tts: TextToSpeech? = null
+    private lateinit var session: SharedPrefs
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        session = SharedPrefs(this)
+
+        //Initialize theme before super onCreate()
+
+        val newTheme = session.getTheme()
+        Toast.makeText(this, newTheme, Toast.LENGTH_SHORT).show()
+        if(newTheme == "SecondTheme") {
+            theme.applyStyle(R.style.SecondTheme_ShoppingEyes, true)
+        }else{
+            theme.applyStyle(R.style.Theme_ShoppingEyes, true)
+        }
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)
         supportActionBar?.hide()
@@ -43,7 +57,7 @@ class HomeScreen : AppCompatActivity(), TextToSpeech.OnInitListener {
         if (status == TextToSpeech.SUCCESS) {
             var result = tts!!.setLanguage(Locale.US)
             tts!!.speak("first button: read the prices", TextToSpeech.QUEUE_ADD, null, "")
-            tts!!.speak("second button: read the banknotes", TextToSpeech.QUEUE_ADD, null, "")
+            tts!!.speak("second button: Identify the banknotes", TextToSpeech.QUEUE_ADD, null, "")
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
                 Toast.makeText(this, "Language specified not supported", Toast.LENGTH_SHORT).show()
             }

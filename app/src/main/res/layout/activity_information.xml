@@ -23,7 +23,6 @@
         return to main menu or click the button in the upper left corner to scan again&#xA;&#xA;7.  In the bottom left corner of Main Menu you
         can choose Settings button for adjustment of language, currency, voice speed, camera flash and color mode options or in the bottom
         right corner button for Instructions. It is possible to turn on silent mode as well"
-            android:textColor="@color/black"
             android:textSize="32dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

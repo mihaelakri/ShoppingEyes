@@ -7,25 +7,21 @@ class SharedPrefs(context: Context) {
     private var sharedPrefFile = "shared_prefs"
     private var prefs: SharedPreferences = context.getSharedPreferences(sharedPrefFile, Context.MODE_PRIVATE)
     private var editor: SharedPreferences.Editor = prefs.edit()
-    var con: Context? = null
+    var con: Context? = context
 
-    var PRIVATE_MODE = 0
-    private val PREF_NAME = "settings"
-    val THEME = "theme"
-    val FONT_SIZE = "font_size"
-    val LETTER_SPACING = "letter_spacing"
-    val CAMERA_FLASH = "camera_flash"
-    val TEXT_TO_SPEECH = "tts"
-
-    fun SharedPrefs(context: Context) {
-        this.con = context
-        prefs = con!!.getSharedPreferences(PREF_NAME, PRIVATE_MODE)
-        editor = prefs.edit()
-    }
+    private val THEME = "theme"
+    private val FONT_SIZE = "font_size"
+    private val LETTER_SPACING = "letter_spacing"
+    private val CAMERA_FLASH = "camera_flash"
+    private val TEXT_TO_SPEECH = "tts"
 
     fun changeTheme(theme: String){
         editor.putString(THEME, theme)
         editor.commit()
+    }
+
+    fun getTheme(): String? {
+        return prefs.getString(THEME, "Theme")
     }
 
     fun cameraFlash(cam: Boolean){
